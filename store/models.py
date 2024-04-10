@@ -8,10 +8,11 @@ class Promotion(models.Model):
 class Collection(models.Model):
     title = models.CharField(max_length=255)
     # '+' means dj shouldnt create the reverse rship in the prod class
-    # it could be a different name also if you were interested in 
-    # creating the reverse rship
+    # it could be a different name also (if you were interested in 
+    # creating the reverse rship)
     featured_product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True, related_name='+')
-    
+    # circular dependency also so the class name is passed as a string 
+
 class Product(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField()
